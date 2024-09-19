@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Jonathan Perry's Portfolio</h1>
+        <h1 className={styles.title}>Jonathan Perry's Porfolio and Blog</h1>
         <p className={styles.desc}>Welcome to my corner of the internet!</p>
         <div className={styles.buttons}>
           <button className={styles.button}>Learn More</button>
