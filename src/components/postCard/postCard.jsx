@@ -6,10 +6,10 @@ function PostCard() {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className="imgContainer">
+        <div className={styles.imgContainer}>
           <Image
             className={styles.img}
-            src="/post.png"
+            src="https://images.pexels.com/photos/18999315/pexels-photo-18999315/free-photo-of-photo-of-a-waterfront-building.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
             fill
           />
