@@ -16,18 +16,18 @@ import { getPosts } from "@/lib/data";
 // };
 
 const BlogPage = async () => {
-  // const posts = await getData();
-  const posts = await getPosts();
+    // const posts = await getData();
+    const posts = await getPosts();
 
-  return (
-    <div className={styles.container}>
-      {posts.map((post) => (
-        <div className={styles.post} key={post.id}>
-          <PostCard post={post} />
+    return (
+        <div className={styles.container}>
+            {posts.map((post) => (
+                <div className={styles.post} key={post.id}>
+                    <PostCard post={post} />
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default BlogPage;
