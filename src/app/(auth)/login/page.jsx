@@ -1,20 +1,17 @@
-import { handleGithubLogin, login } from "@/lib/action";
-import { auth } from "@/lib/auth";
+import LoginForm from "@/components/loginForm/loginForm";
+import { handleGithubLogin } from "@/lib/action";
+import styles from "./login.module.css";
 
-const LoginPage = async () => {
-    const session = await auth();
-    console.log("session: ", session);
-
+const LoginPage = () => {
     return (
-        <div>
-            <form action={handleGithubLogin}>
-                <button>Login with Github</button>
-            </form>
-            <form action={login}>
-                <input type="text" placeholder="Username" name="username" />
-                <input type="text" placeholder="Password" name="password" />
-                <button>Login with Credentials</button>
-            </form>
+        <div className={styles.container}>
+            <div className={styles.wrapper}>
+                <form action={handleGithubLogin}>
+                    <button className={styles.github}>Login with Github</button>
+                </form>
+
+                <LoginForm />
+            </div>
         </div>
     );
 };
