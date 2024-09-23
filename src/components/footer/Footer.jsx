@@ -1,14 +1,11 @@
-import Link from "next/link";
 import styles from "./footer.module.css";
-import { FaDiscord } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
 
 function Footer() {
     return (
         <div className={styles.container}>
             <div className={styles.logo}>
-                <Link href="https://discord.com/users/500700533368160292">
-                    <FaDiscord />: jonnyramen
-                </Link>
+                <p>jonnyramen</p>
             </div>
             <div className={styles.text}>
                 Jonny Ramen creative thoughts agency © All rights reserved.

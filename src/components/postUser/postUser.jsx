@@ -9,15 +9,15 @@ const PostUser = async ({ userId }) => {
         <div className={styles.container}>
             <Image
                 className={styles.avatar}
-                src={user.img ? user.img : "/noavatar.png"}
+                src={user?.img ? user.img : "/noavatar.png"}
                 alt=""
                 width={50}
                 height={50}
             />
 
             <div className={styles.texts}>
-                <span className={styles.title}>Title</span>
-                <span className={styles.username}>Terry Jefferson</span>
+                <span className={styles.title}>Author</span>
+                <span className={styles.username}>{user.username}</span>
             </div>
         </div>
     );

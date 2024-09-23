@@ -5,7 +5,8 @@ import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
-export const addPost = async (formData) => {
+export const addPost = async (prevState, formData) => {
+    console.log("form data: ", formData);
     const { title, desc, slug, userId } = Object.fromEntries(formData);
 
     try {
@@ -21,6 +22,7 @@ export const addPost = async (formData) => {
         console.log("saved to db");
 
         revalidatePath("/blog");
+        revalidatePath("/admin");
     } catch (error) {
         console.error(error);
         return { error: "Something went wrong" };
@@ -28,14 +30,54 @@ export const addPost = async (formData) => {
 };
 
 export const deletePost = async (formData) => {
-    const { postId } = Object.fromEntries(formData);
+    const { _id } = Object.fromEntries(formData);
 
     try {
         connectToDb();
-        await Post.findByIdAndDelete(postId);
+        await Post.findByIdAndDelete(_id);
         console.log("deleted from db");
 
         revalidatePath("/blog");
+        revalidatePath("/admin");
+    } catch (error) {
+        console.error(error);
+        return { error: "Something went wrong" };
+    }
+};
+
+export const addUser = async (prevState, formData) => {
+    const { username, email, password, img } = Object.fromEntries(formData);
+
+    try {
+        connectToDb();
+        const newUser = new User({
+            username,
+            email,
+            password,
+            img,
+        });
+
+        await newUser.save();
+        console.log("saved to db");
+
+        revalidatePath("/admin");
+    } catch (error) {
+        console.error(error);
+        return { error: "Something went wrong" };
+    }
+};
+
+export const deleteUser = async (formData) => {
+    const { _id } = Object.fromEntries(formData);
+
+    try {
+        connectToDb();
+
+        await Post.deleteMany({ userId: _id });
+        await User.findByIdAndDelete(_id);
+        console.log("deleted from db");
+
+        revalidatePath("/admin");
     } catch (error) {
         console.error(error);
         return { error: "Something went wrong" };
